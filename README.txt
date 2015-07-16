@@ -1,10 +1,10 @@
-build
+Build
 docker build -t kennylee26/vsftpd .
 
-test
+Test
 docker run -ti -p 20-21:20-21 -p 65400-65410:65400-65410 --name vsftpd --rm kennylee26/vsftpd bash
 
-run
+Run
 docker run -d -p 20-21:20-21 -p 65400-65410:65400-65410 --name vsftdp kennylee26/vsftpd
 
 Run & Persistent data
@@ -18,3 +18,5 @@ ftp账号有两种：
 2、第二种的管理用户。默认账号密码为 ftpuser/admin。没有绑定目录，职责是负责维护/var/www目录，把upload文件分类处理或销毁。
 
 数据卷目录 /var/www
+
+其他：没有用虚拟用户，因为仅仅作为容器内的ftp，安全级别不用那么严谨，另外就是不想影响容器内部网络设置。

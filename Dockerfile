@@ -40,6 +40,6 @@ RUN chmod +x /*.sh
 WORKDIR /root
 
 # Define default command.
-EXPOSE 20-21 65400-65600
+EXPOSE 20-21 65400-65535
 
 CMD ["/run.sh"]

@@ -2,14 +2,14 @@ Build
 docker build -t kennylee26/vsftpd .
 
 Test
-docker run -ti -p 20-21:20-21 -p 65400-65410:65400-65410 --name vsftpd --rm kennylee26/vsftpd bash
+docker run -ti -p 20-21:20-21 -p 65400-65535:65400-65535 --name vsftpd --rm kennylee26/vsftpd bash
 
 Run
-docker run -d -p 20-21:20-21 -p 65400-65410:65400-65410 --name vsftdp kennylee26/vsftpd
+docker run -d -p 20-21:20-21 -p 65400-65535:65400-65535 --name vsftdp kennylee26/vsftpd
 
 Run & Persistent data
 docker run --name ftp-data -v /var/www busybox echo 'Read-Only Data Container.'
-docker run -d --volumes-from ftp-data -p 20-21:20-21 -p 65400-65410:65400-65410 --name vsftpd kennylee26/vsftpd /run-in-data.sh
+docker run -d --volumes-from ftp-data -p 20-21:20-21 -p 65400-65535:65400-65535 --name vsftpd kennylee26/vsftpd /run-in-data.sh
 
 --------------
 
